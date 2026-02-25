@@ -1,0 +1,39 @@
+# Environment files
+.env
+.env.backup
+.env.production
+
+# Vendor dependencies
+/vendor/
+/PWL_2026/vendor/
+/node_modules/
+/PWL_2026/node_modules/
+
+# Laravel compiled/cached files
+/PWL_2026/bootstrap/cache/*
+!/PWL_2026/bootstrap/cache/.gitkeep
+/PWL_2026/storage/*.key
+/PWL_2026/storage/framework/cache/*
+/PWL_2026/storage/framework/sessions/*
+/PWL_2026/storage/framework/views/*
+/PWL_2026/storage/logs/*
+
+# Composer
+composer.phar
+
+# IDE / Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Docker volumes
+mysqldata/
+
+# Build artifacts
+/PWL_2026/public/build/
+/PWL_2026/public/hot
+/PWL_2026/public/storage
