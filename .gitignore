@@ -1,39 +1,24 @@
-# Environment files
+*.log
+.DS_Store
 .env
 .env.backup
 .env.production
-
-# Vendor dependencies
-/vendor/
-/PWL_2026/vendor/
-/node_modules/
-/PWL_2026/node_modules/
-
-# Laravel compiled/cached files
-/PWL_2026/bootstrap/cache/*
-!/PWL_2026/bootstrap/cache/.gitkeep
-/PWL_2026/storage/*.key
-/PWL_2026/storage/framework/cache/*
-/PWL_2026/storage/framework/sessions/*
-/PWL_2026/storage/framework/views/*
-/PWL_2026/storage/logs/*
-
-# Composer
-composer.phar
-
-# IDE / Editor
-.idea/
-.vscode/
-*.swp
-*.swo
-*~
-.DS_Store
+.phpactor.json
+.phpunit.result.cache
+/.fleet
+/.idea
+/.nova
+/.phpunit.cache
+/.vscode
+/.zed
+/auth.json
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/vendor
+Homestead.json
+Homestead.yaml
 Thumbs.db
-
-# Docker volumes
-mysqldata/
-
-# Build artifacts
-/PWL_2026/public/build/
-/PWL_2026/public/hot
-/PWL_2026/public/storage
