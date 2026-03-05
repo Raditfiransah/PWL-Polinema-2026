@@ -28,14 +28,14 @@ RUN useradd -G www-data,root -u $uid -d /home/$user $user \
     && chown -R $user:$user /home/$user
 
 # Set working directory
-WORKDIR /var/www
+WORKDIR /var/www/PWL_POS
 
 # Copy existing application directory
 COPY . /var/www
 
 # Set permissions
 RUN chown -R $user:www-data /var/www \
-    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache || true
+    && chmod -R 775 /var/www/PWL_POS/storage /var/www/PWL_POS/bootstrap/cache || true
 
 USER $user
 

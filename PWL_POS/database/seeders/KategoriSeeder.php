@@ -1,0 +1,21 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class KategoriSeeder extends Seeder
+{
+    public function run(): void
+    {
+        $data = [
+            ['kategori_id' => 1, 'kategori_kode' => 'KTG001', 'kategori_nama' => 'Makanan Pokok'],
+            ['kategori_id' => 2, 'kategori_kode' => 'KTG002', 'kategori_nama' => 'Minuman'],
+            ['kategori_id' => 3, 'kategori_kode' => 'KTG003', 'kategori_nama' => 'Snack & Camilan'],
+            ['kategori_id' => 4, 'kategori_kode' => 'KTG004', 'kategori_nama' => 'Bumbu & Rempah'],
+            ['kategori_id' => 5, 'kategori_kode' => 'KTG005', 'kategori_nama' => 'Produk Susu'],
+        ];
+        DB::table('m_kategori')->insert($data);
+    }
+}
