@@ -1,4 +1,4 @@
-FROM php:8.3-fpm
+FROM php:8.4-fpm
 
 # Arguments
 ARG user=laravel
@@ -13,9 +13,11 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     default-libmysqlclient-dev \
     libzip-dev \
+    libicu-dev \
     zip \
     unzip \
-    && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd zip \
+    && docker-php-ext-configure intl \
+    && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd zip intl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -28,14 +30,14 @@ RUN useradd -G www-data,root -u $uid -d /home/$user $user \
     && chown -R $user:$user /home/$user
 
 # Set working directory
-WORKDIR /var/www/PWL_POS
+WORKDIR /var/www/PraktikumPWLFilament
 
 # Copy existing application directory
 COPY . /var/www
 
 # Set permissions
 RUN chown -R $user:www-data /var/www \
-    && chmod -R 775 /var/www/PWL_POS/storage /var/www/PWL_POS/bootstrap/cache || true
+    && chmod -R 775 /var/www/PraktikumPWLFilament/storage /var/www/PraktikumPWLFilament/bootstrap/cache || true
 
 USER $user
 
