@@ -1,0 +1,69 @@
+<?php
+
+namespace App\Filament\Resources\Products\Schemas;
+
+use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Tabs\Tab;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\ImageEntry;
+use Filament\Infolists\Components\IconEntry;
+
+class ProductInfolist
+{
+    public static function configure(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                Tabs::make('Product Details')
+                    ->tabs([
+                        Tab::make('Product Info')
+                            ->icon('heroicon-o-identification')
+                            ->schema([
+                                TextEntry::make('name')
+                                    ->label('Product Name')
+                                    ->weight('bold')
+                                    ->color('primary'),
+                                TextEntry::make('sku')
+                                    ->label('SKU')
+                                    ->badge()
+                                    ->color('success'),
+                                TextEntry::make('description')
+                                    ->label('Description'),
+                            ]),
+
+                        Tab::make('Pricing & Stock')
+                            ->icon('heroicon-o-banknotes')
+                            ->badge(fn ($record) => (string) $record->stock)
+                            ->badgeColor(fn ($record) => match (true) {
+                                $record->stock < 10 => 'danger',
+                                $record->stock < 50 => 'warning',
+                                default => 'success',
+                            })
+                            ->schema([
+                                TextEntry::make('price')
+                                    ->label('Price')
+                                    ->icon('heroicon-o-currency-dollar'),
+                                TextEntry::make('stock')
+                                    ->label('Stock'),
+                            ]),
+
+                        Tab::make('Media & Status')
+                            ->icon('heroicon-o-check-badge')
+                            ->schema([
+                                ImageEntry::make('image')
+                                    ->label('Product Image')
+                                    ->disk('public'),
+                                IconEntry::make('is_active')
+                                    ->label('Active')
+                                    ->boolean(),
+                                IconEntry::make('is_featured')
+                                    ->label('Featured')
+                                    ->boolean(),
+                            ]),
+                    ])
+                    ->columnSpanFull()
+                    // ->vertical(),
+            ]);
+    }
+}
